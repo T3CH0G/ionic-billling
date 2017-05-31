@@ -1,0 +1,74 @@
+<ion-view view-title="Quotations">
+  <ion-content>
+  	<ion-refresher
+	    pulling-text="Pull to refresh..."
+	    on-refresh="doRefresh()">
+	</ion-refresher>
+    <div class="list list-inset">
+      <label class="item item-input">
+	    <input type="text" placeholder="Subject" ng-model="quotation.subject">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Client ID" ng-model="quotation.client_id">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Item" ng-model="quotation.item">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Description" ng-model="quotation.description">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Cost" ng-model="quotation.cost">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Quantity" ng-model="quotation.quantity">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Quotation Status" ng-model="quotation.quotation_status">
+	  </label>
+	  <label class="item item-input">
+	    <input type="date" placeholder="Created At" ng-model="quotation.created_at">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Amount Paid" ng-model="quotation.amount_paid">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Company Id" ng-model="quotation.company_id">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Payment Type" ng-model="quotation.payment_type">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Currency" ng-model="quotation.currency">
+	  </label>
+	  <button class="button button-block button-positive" ng-click="addQuotation(quotation)">
+	  	Add quotation
+	  </button>
+    </div>
+	
+	<ion-list can-swipe="listCanSwipe">
+	  	<ion-item ng-repeat="quotation in quotations" class="item item-text-wrap" href="#/app/quotations/{{quotation.quotation_id}}">
+
+	    <!-- companies.updatequotation(quotation) -->
+	    <h2>{{quotation.subject}}</h2>		
+
+	    <ion-option-button class="button-positive"
+	                       ng-click="updatePopup(quotation, 'Update')">
+	      <!-- Edit -->
+	      <i class="icon ion-edit"></i>
+	    </ion-option-button>
+
+	    <ion-option-button class="button-assertive"
+	                       ng-click="deleteQuotation($index, quotation.quotation_id)">	      
+	      <!-- Delete -->
+	      <i class="icon ion-trash-a"></i>
+	    </ion-option-button>
+
+	  	</ion-item>
+	</ion-list>
+
+	<ion-infinite-scroll  ng-if="!noMoreItemsAvailable"
+  on-infinite="loadMore(5)" distance="10%"></ion-infinite-scroll>
+
+  </ion-content>
+</ion-view>

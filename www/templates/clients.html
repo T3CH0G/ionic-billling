@@ -1,0 +1,59 @@
+<ion-view view-title="clients">
+  <ion-content>
+  	<ion-refresher
+	    pulling-text="Pull to refresh..."
+	    on-refresh="doRefresh()">
+	</ion-refresher>
+    <div class="list list-inset">
+      <label class="item item-input">
+	    <input type="text" placeholder="Client Name" ng-model="client.name">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Company Name" ng-model="client.company_name">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Registration Number" ng-model="client.registration_number">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Address" ng-model="client.address">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Country" ng-model="client.country">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Email" ng-model="client.email">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Contact Number" ng-model="client.contact_number">
+	  </label>
+	  <button class="button button-block button-positive" ng-click="addClient(client)">
+	  	Add client
+	  </button>
+    </div>
+	
+	<ion-list can-swipe="listCanSwipe">
+	  	<ion-item ng-repeat="client in clients" class="item item-text-wrap" href="#/app/clients/{{client.client_id}}">
+
+	    <!-- clients.updateclient(client) -->
+	    <h2>{{client.name}}</h2>		
+
+	    <ion-option-button class="button-positive"
+	                       ng-click="updatePopup(client, 'Update')">
+	      <!-- Edit -->
+	      <i class="icon ion-edit"></i>
+	    </ion-option-button>
+
+	    <ion-option-button class="button-assertive"
+	                       ng-click="deleteClient($index, client.client_id)">	      
+	      <!-- Delete -->
+	      <i class="icon ion-trash-a"></i>
+	    </ion-option-button>
+
+	  	</ion-item>
+	</ion-list>
+
+	<ion-infinite-scroll  ng-if="!noMoreItemsAvailable"
+  on-infinite="loadMore(5)" distance="10%"></ion-infinite-scroll>
+
+  </ion-content>
+</ion-view>

@@ -1,4 +1,4 @@
-ion-view view-title="Companies">
+<ion-view view-title="Companies">
   <ion-content>
   	<ion-refresher
 	    pulling-text="Pull to refresh..."
@@ -6,7 +6,31 @@ ion-view view-title="Companies">
 	</ion-refresher>
     <div class="list list-inset">
       <label class="item item-input">
-	    <input type="text" placeholder="Add new company.." ng-model="company">
+	    <input type="text" placeholder="Company Name" ng-model="company.name">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Company Address" ng-model="company.address1">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Company Address 2" ng-model="company.address2">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Company Address 3" ng-model="company.address3">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Company Address 4" ng-model="company.address4">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Company Address 5" ng-model="company.address5">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Registration Number" ng-model="company.registration_number">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Malaysian Bank Account Number" ng-model="company.bmy">
+	  </label>
+	  <label class="item item-input">
+	    <input type="text" placeholder="Singaporean Bank Account Number" ng-model="company.bsg">
 	  </label>
 	  <button class="button button-block button-positive" ng-click="addCompany(company)">
 	  	Add company

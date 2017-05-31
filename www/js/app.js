@@ -104,7 +104,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'satellizer', 'permis
       }
     }
   })
-
+  .state('app.clients', {
+    url: '/clients',
+    data: {
+        permissions: {
+          except: ['anonymous'],
+          redirectTo: 'app.auth'
+        }
+      },
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/clients.html',
+        controller: 'ClientsCtrl'
+      }
+    }
+  })
   .state('app.search', {
     url: '/search',
     views: {
@@ -138,6 +152,36 @@ angular.module('starter', ['ionic', 'starter.controllers', 'satellizer', 'permis
       'menuContent': {
         templateUrl: 'templates/playlist.html',
         controller: 'PlaylistCtrl'
+      }
+    }
+  })
+
+  .state('app.company', {
+    url: '/companies/:companyId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/company.html',
+        controller: 'CompanyCtrl'
+      }
+    }
+  })
+
+  .state('app.client', {
+    url: '/clients/:clientId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/client.html',
+        controller: 'ClientCtrl'
+      }
+    }
+  })
+
+  .state('app.quotations', {
+    url: '/quotations',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/quotations.html',
+        controller: 'QuotationsCtrl'
       }
     }
   });
